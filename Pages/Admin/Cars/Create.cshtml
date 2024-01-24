@@ -1,0 +1,55 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.Cars.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="car-creation">
+        <h4>Please fill in the information about the car.</h4>
+        <h4>Press the "Create" button when finished</h4>
+        <h4>Press the "Back" button to go back to the garage</h4>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div >
+                <label asp-for="Car.Brand">Brand:</label>
+                <input asp-for="Car.Brand"/>
+                <span asp-validation-for="Car.Brand"></span>
+            </div><br />
+            <div >
+                <label asp-for="Car.Model">Model:</label>
+                <input asp-for="Car.Model"/>
+                <span asp-validation-for="Car.Model"></span>
+            </div><br />
+            <div>
+                <label asp-for="Car.Price">Price:</label>
+                <input asp-for="Car.Price"/>
+                <span asp-validation-for="Car.Price"></span>
+            </div><br />
+            <div >
+                <label asp-for="Car.Picture1">Picture 1 URL:</label>
+                <input asp-for="Car.Picture1"/>
+                <span asp-validation-for="Car.Picture1"></span>
+            </div><br />
+            <div >
+                <label asp-for="Car.Picture2">Picture 2 URL:</label>
+                <input asp-for="Car.Picture2"  />
+                <span asp-validation-for="Car.Picture2"></span>
+            </div><br />
+            <div class ="createbutton">
+                <input type="submit" value="Create" class="buttonPositive" />
+            </div>
+        </form><br />
+        <div class="backbutton">
+            <button>
+                <a asp-page="Index">&nbsp;Back</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

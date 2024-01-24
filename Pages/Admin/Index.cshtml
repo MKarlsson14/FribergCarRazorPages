@@ -1,0 +1,40 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.LoginAdminModel
+
+@{
+    ViewData["Title"] = "LoginAdmin";
+}
+<div class="loginform">
+    <div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="Admin.AdminName">User:</label>
+                <input asp-for="Admin.AdminName" />
+                <span asp-validation-for="Admin.AdminName"></span>
+            </div><br />
+            <div>
+                <label asp-for="Admin.AdminPassword">Password:</label>
+                <input asp-for="Admin.AdminPassword" />
+                <span asp-validation-for="Admin.AdminPassword"></span>
+            </div><br /><br />
+            <div>              
+                <input type="submit" value="Log In" />            
+            </div>
+        </form><br />
+    </div>
+    <div>
+        <button>
+        <a asp-page="Home/Index" class="button">Back to home page</a>
+        </button>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+}

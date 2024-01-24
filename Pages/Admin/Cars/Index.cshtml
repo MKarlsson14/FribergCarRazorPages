@@ -1,0 +1,57 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.Cars.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<p>
+    <button class="buttonFunction">
+    <a asp-page="Create">Create New Car</a>
+    </button>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Car)
+        {
+            <tr>
+                <td>
+                    <img src="@Url.Content(item.Picture1)" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.CarId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.CarId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.CarId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div>
+    <button>
+    <a asp-page="/Admin/IndexAdmin">&nbsp; Back</a>
+    </button>
+</div>

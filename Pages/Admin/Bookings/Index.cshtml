@@ -1,0 +1,49 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.Bookings.ListModel
+
+@{
+    ViewData["Title"] = "List";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Booking[0].EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Booking) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                    <button class="buttonNegative">
+                <a asp-page="./Delete" asp-route-id="@item.BookingId">Delete</a>
+                </button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <button>
+        <a asp-page="/Admin/IndexAdmin">&nbsp; Back</a>
+    </button>
+</div>

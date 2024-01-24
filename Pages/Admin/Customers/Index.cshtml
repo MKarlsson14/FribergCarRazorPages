@@ -1,0 +1,45 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.Customers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<button class="buttonFunction">
+    <a asp-page="Create">Create New Customer</a>
+</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].CustomerPassword)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Customer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerPassword)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CustomerId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CustomerId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CustomerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <button>
+        <a asp-page="/Admin/IndexAdmin">&nbsp; Back</a>
+    </button>
+</div>

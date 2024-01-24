@@ -1,0 +1,46 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.Cars.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="detailbg">
+    <h1>Car Information</h1>
+
+<div>
+    <h4>See the details of the car</h4><br/>
+    <h4 class="picturedetail">
+            <img src="@Url.Content(Model.Car.Picture1)" width="250" />
+            <img src="@Url.Content(Model.Car.Picture2)" width="250" />
+    </h4>
+    <dl class="row">
+        <dt class="headdetails">
+            @Html.DisplayNameFor(model => model.Car.Brand):
+        </dt>
+        <dd class="descdetails">
+                @Html.DisplayFor(model => model.Car.Brand)
+        </dd>
+        <dt class="headdetails">
+                @Html.DisplayNameFor(model => model.Car.Model):
+        </dt>
+        <dd class="descdetails">
+            @Html.DisplayFor(model => model.Car.Model)
+        </dd>
+        <dt class="headdetails">
+                @Html.DisplayNameFor(model => model.Car.Price) per day:
+        </dt>
+        <dd class="descdetails">
+                @Html.DisplayFor(model => model.Car.Price)
+        </dd>
+    </dl>
+</div>
+<div class="navdetails">
+    <button class="buttonFunction">
+    <a asp-page="./Edit" asp-route-id="@Model.Car.CarId">Edit</a>
+    </button>
+    <button>
+    <a asp-page="./Index">Back to the Garage</a>
+    </button>
+</div>
+</div>

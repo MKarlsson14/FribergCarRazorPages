@@ -1,0 +1,40 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.Customers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="car-creation">
+        <h4>Please change the information you'd like to change.</h4>
+        <h4>Press the "Save" button when finished</h4>
+        <h4>Press the "Back" button to go back and discard any changes</h4>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <input type="hidden" asp-for="Customer.CustomerId" />
+            <div>
+                <label asp-for="Customer.CustomerName"></label>
+                <input asp-for="Customer.CustomerName"/>
+                <span asp-validation-for="Customer.CustomerName"></span>
+            </div>
+            <div>
+                <label asp-for="Customer.CustomerPassword"></label>
+                <input asp-for="Customer.CustomerPassword"/>
+                <span asp-validation-for="Customer.CustomerPassword"></span>
+            </div>
+            <div class="createbutton">
+                <input type="submit" value="Save" class="buttonPositive" />
+            </div>
+        </form><br />
+        <div>
+            <a asp-page="./Index" class="buttonNegative">&nbsp;Back</a>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

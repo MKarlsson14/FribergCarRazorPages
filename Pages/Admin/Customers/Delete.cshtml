@@ -1,0 +1,37 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.Customers.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="detailbg">
+    <h4>Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="headdetails">
+            @Html.DisplayNameFor(model => model.Customer.CustomerName)
+        </dt>
+        <dd class="descdetails">
+            @Html.DisplayFor(model => model.Customer.CustomerName)
+        </dd>
+        <dt class="headdetails">
+            @Html.DisplayNameFor(model => model.Customer.CustomerPassword)
+        </dt>
+        <dd class="descdetails">
+            @Html.DisplayFor(model => model.Customer.CustomerPassword)
+        </dd>
+    </dl>
+    </div>
+    <div class="navdetails">
+    <form method="post">
+        <input type="hidden" asp-for="Customer.CustomerId" />
+        <input type="submit" value="Delete" class="buttonNegative"/> |
+        <button>
+            <a asp-page="./Index">Back to List</a>
+        </button>
+    </form>
+</div>

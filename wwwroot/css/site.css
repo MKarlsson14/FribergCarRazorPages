@@ -1,0 +1,275 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.navbody {
+    /*padding-left: 20%;*/
+    /* margin: auto;*/
+    overflow: hidden;
+}
+
+    .navbody ul {
+        list-style-type: none;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .navbody li {
+        margin-top: 1.5%;
+        font-weight: 600;
+        font-size: xx-large;
+        text-decoration: none;
+        display: inline-block;
+        color: black;
+        border: 3px solid;
+        background: linear-gradient(to top, #a86110, rgb(235, 116, 4));
+        border-color: black;
+        padding: 0.40%;
+        text-align: center;
+    }
+#logo {
+    margin: auto;
+    /*float: inline-start;*/
+    border: none;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+:root {
+    /* The colors used for this styleguide*/
+    --blue: #090988;
+    --white: white;
+    --black: rgba(0, 0, 0, 0.822);
+    --yellow: rgb(223, 191, 10);
+}
+
+a:hover {
+    color: rgb(105, 102, 102);
+    text-decoration: underline;
+}
+
+a:link {
+    color: rgb(54, 53, 53);
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+body {
+    margin-bottom: 60px;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+    background-image: url('../pictures/road4k.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.table {
+    background: white;
+    margin: auto;
+    border: solid;
+    border-color: black;
+    border-collapse: collapse;
+}
+
+    .table th {
+        padding-top: 2%;
+        padding-bottom: 2%;
+        border-bottom: groove;
+        color: black;
+    }
+
+    .table tr {
+        border: none;
+    }
+
+    .table td {
+        padding-top: 2%;
+        padding-bottom: 2%;
+        width: 12rem;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: lightgrey;
+    }
+
+.row {
+    text-align: left;
+}
+
+.picturedetail {
+    float: left;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
+
+.headdetails {
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.descdetails {
+    padding-bottom: 1rem;
+    margin-top: 0.5rem;
+    font-size: large;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--white);
+    border-style: solid;
+    border-color: grey;
+    border-radius: 10px;
+}
+
+.buttonPositive {
+    background-color: #018749;
+    color: rgb(42, 54, 42);
+    color: black;
+}
+
+.buttonNegative {
+    background-color: #7C0A02;
+    color: rgb(73, 6, 6);
+}
+
+.buttonFunction {
+    background-color: lightgrey;
+    color: rgb(92, 91, 91);
+}
+
+.backbutton {
+    margin-left: 1px;
+    padding: 0rem;
+    border-style: solid;
+    border-top-color: lightgray;
+    border-left-color: ghostwhite;
+    border-right-color: grey;
+    border-bottom-color: grey;
+    border-bottom-width: thin;
+    border-right-width: thin;
+    background-color: #B22222;
+}
+
+.createbutton {
+    margin-left: 0.1rem;
+    font-weight: bold;
+}
+
+.indexhead {
+    font-size: xx-large;
+    margin-top: 0.5rem;
+    padding: 10px;
+    background-color: var(--white);
+    border-radius: 10px;
+}
+
+.menubg {
+    background-color: lightgrey;
+    margin-left: 35rem;
+    margin-right: 35rem;
+    margin-bottom: 0;
+    margin-top: 0.9%;
+    border-style: solid;
+    border-bottom-width: 0.3rem;
+    border-left-width: 0.3rem;
+    border-right-width: 0.3rem;
+    border-top-width: 0.2rem;
+    overflow: hidden;
+}
+
+.detailbg {
+    background-color: lightgrey;
+    border-style: solid;
+    border-bottom-width: 0.3rem;
+    border-left-width: 0.3rem;
+    border-right-width: 0.3rem;
+    border-top-width: 0.2rem;
+    margin-left: 28%;
+    margin-right: 28%;
+    margin-top: 0.9%;
+    padding-bottom: 0.5rem;
+    padding-top: 0rem;
+    overflow: hidden;
+}
+
+.loginform {
+    background-color: lightgrey;
+    border-style: solid;
+    border-color: dimgrey;
+    border-bottom-width: 0.3rem;
+    border-left-width: 0.3rem;
+    border-right-width: 0.3rem;
+    border-top-width: 0.2rem;
+    margin-left: 42%;
+    margin-right: 42%;
+    margin-top: 11%;
+    padding-bottom: 0.9rem;
+    padding-top: 2rem;
+    overflow: hidden;
+}
+
+.car-creation {
+    background-color: lightgrey;
+    border-style: solid;
+    border-bottom-width: 0.3rem;
+    border-left-width: 0.3rem;
+    border-right-width: 0.3rem;
+    border-top-width: 0.2rem;
+    padding-bottom: 5rem;
+    padding-left: 3rem;
+    margin-left: 28%;
+    margin-right: 28%;
+    margin-top: 0.9%;
+    padding-top: 0rem;
+    overflow: hidden;
+}
+
+.bookingcar {
+    margin: auto;
+}
+
+.bookingconfirmation {
+    background-color: lightgrey;
+    border-style: solid;
+    border-bottom-width: 0.3rem;
+    border-left-width: 0.3rem;
+    border-right-width: 0.3rem;
+    border-top-width: 0.2rem;
+    margin-left: 28%;
+    margin-right: 28%;
+    margin-top: 0.9%;
+    padding-bottom: 0.5rem;
+    padding-top: 0rem;
+    overflow: hidden;
+}

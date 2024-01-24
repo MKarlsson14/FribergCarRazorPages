@@ -1,0 +1,22 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Admin.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h4 id="logo"><img src="~/pictures/fribergrentalnobg.png" width="250"></h4>
+<br />
+<br />
+<nav class="navbody">
+    <ul>
+        <li><a asp-area="" asp-page="./Cars/Index">Car Options</a></li>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <li><a asp-area="" asp-page="./Customers/Index">Customer Options</a></li>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <li><a asp-area="" asp-page="./Bookings/Index">Booking Options</a></li>          
+    </ul>
+</nav>

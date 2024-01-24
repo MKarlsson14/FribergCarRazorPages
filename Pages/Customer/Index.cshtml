@@ -1,0 +1,38 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Customer.LoginCustomerModel
+
+@{
+    ViewData["Title"] = "LoginCustomer";
+}
+
+    <div class="loginform">
+    <div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="Customer.CustomerName">Name:</label>
+                <input asp-for="Customer.CustomerName" />
+                <span asp-validation-for="Customer.CustomerName" ></span>
+            </div><br />
+            <div>
+                <label asp-for="Customer.CustomerPassword" >Password:</label>
+                <input asp-for="Customer.CustomerPassword"/>
+                <span asp-validation-for="Customer.CustomerPassword" ></span>
+            </div><br />
+            <div>
+                <input type="submit" value="Log In"/>
+            </div>
+        </form><br />
+    </div>
+    <div>
+        <button>
+        <a asp-page="Index">Back to List</a>
+        </button>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
