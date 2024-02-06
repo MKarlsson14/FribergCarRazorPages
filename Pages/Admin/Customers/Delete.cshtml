@@ -5,13 +5,8 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
 <div class="detailbg">
-    <h4>Customer</h4>
-    <hr />
-    <dl class="row">
+    <h3>Are you sure you want to delete this?</h3>
         <dt class="headdetails">
             @Html.DisplayNameFor(model => model.Customer.CustomerName)
         </dt>
@@ -31,7 +26,7 @@
         <input type="hidden" asp-for="Customer.CustomerId" />
         <input type="submit" value="Delete" class="buttonNegative"/> |
         <button>
-            <a asp-page="./Index">Back to List</a>
+            <a asp-page="./Index">Back</a>
         </button>
     </form>
 </div>

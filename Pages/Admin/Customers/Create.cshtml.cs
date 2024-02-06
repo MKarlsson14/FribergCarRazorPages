@@ -21,16 +21,26 @@ namespace FribergCarRazorPages.Pages.Admin.Customers
 
         public IActionResult OnGet()
         {
-            return Page();
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
+            {
+
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("Admin/Index");
+            }
         }
 
         [BindProperty]
         public FibergCarRazorPages.Models.Customer Customer { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            if (Customer.CustomerName == null && Customer.CustomerPassword == null)
             {
                 return Page();
             }

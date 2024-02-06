@@ -1,4 +1,6 @@
 using FibergCarRazorPages.Data;
+using FibergCarRazorPages.Models;
+using FribergCarRazorPages.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace FibergCarRazorPages
@@ -13,6 +15,9 @@ namespace FibergCarRazorPages
             builder.Services.AddRazorPages();
             builder.Services.AddDbContext<ApplicationDbContext>(c => c.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FribergCarSolution;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False"));
             builder.Services.AddTransient(typeof(IRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddTransient(typeof(IBooking), typeof(BookingRepository));
+            builder.Services.AddTransient(typeof(ICustomer), typeof(CustomerRepository));
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
             var app = builder.Build();
@@ -30,7 +35,7 @@ namespace FibergCarRazorPages
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthorization();      
 
             app.MapRazorPages();
 

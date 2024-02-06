@@ -12,49 +12,57 @@ namespace FribergCarRazorPages.Pages.Admin.Bookings
 {
     public class DeleteModel : PageModel
     {
-        private readonly FibergCarRazorPages.Data.ApplicationDbContext _context;
+        private readonly IRepository<Booking> bookRep;
 
-        public DeleteModel(FibergCarRazorPages.Data.ApplicationDbContext context)
+        public DeleteModel(IRepository<Booking> bookRep)
         {
-            _context = context;
+
+            this.bookRep = bookRep;
         }
 
         [BindProperty]
         public Booking Booking { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public IActionResult OnGet(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var booking = await _context.Bookings.FirstOrDefaultAsync(m => m.BookingId == id);
-
-            if (booking == null)
+            var booking = bookRep.GetById(id);
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
             {
-                return NotFound();
+                if (booking == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    Booking = booking;
+                }
+                return Page();
             }
             else
             {
-                Booking = booking;
+                return RedirectToPage("Admin/Index");
             }
-            return Page();
+
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public IActionResult OnPost(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var booking = await _context.Bookings.FindAsync(id);
+            var booking = bookRep.GetById(id);
             if (booking != null)
             {
                 Booking = booking;
-                _context.Bookings.Remove(Booking);
-                await _context.SaveChangesAsync();
+                bookRep.Delete(Booking);
             }
 
             return RedirectToPage("./Index");

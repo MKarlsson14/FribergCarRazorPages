@@ -1,0 +1,39 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Customer.Bookings.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<div class="detailbg">
+    <h3>Are you sure you want to return this order?</h3>
+    <dl class="row">
+        <dt class="headdetails">
+            @Html.DisplayNameFor(model => model.Booking.StartDate)
+        </dt>
+        <dd class="descdetails">
+            @Html.DisplayFor(model => model.Booking.StartDate)
+        </dd>
+        <dt class="headdetails">
+            @Html.DisplayNameFor(model => model.Booking.EndDate)
+        </dt>
+        <dd class="descdetails">
+            @Html.DisplayFor(model => model.Booking.EndDate)
+        </dd>
+    </dl>
+</div>
+<div class="navdetails">
+    <form method="post">
+        <input type="hidden" asp-for="Booking.BookingId" />
+            <input type="submit" value="Return" class="buttonNegative" />   
+        <button>
+            <a asp-page="./Index">Back to List</a>
+        </button>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

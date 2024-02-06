@@ -4,44 +4,70 @@
 @{
     ViewData["Title"] = "List";
 }
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].StartDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Booking[0].EndDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Booking) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                    <button class="buttonNegative">
-                <a asp-page="./Delete" asp-route-id="@item.BookingId">Delete</a>
-                </button>
-            </td>
-        </tr>
+@if (Model.Booking.Count() > 0)
+{
+    <button>
+        <h1>Active Bookings</h1>
+    </button>
+    <table class="table">  
+        <thead>
+            <tr>
+                <th>
+                    Booking Number
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].Customer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].Car)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].EndDate)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Booking)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+                    </td>
+                    <td>
+                        @item.Car.Brand @item.Car.Model
+                    </td>          
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        <button class="buttonNegative">
+                            <a asp-page="./Delete" asp-route-id="@item.BookingId">Delete</a>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
-    </tbody>
-</table>
+else
+{
+    <button>
+        <h1>No Current Bookings</h1>
+    </button>
+}
+<br />
 <div>
     <button>
         <a asp-page="/Admin/IndexAdmin">&nbsp; Back</a>

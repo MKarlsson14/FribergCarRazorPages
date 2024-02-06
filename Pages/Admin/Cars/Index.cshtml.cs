@@ -19,11 +19,21 @@ namespace FribergCarRazorPages.Pages.Admin.Cars
             this.carRep = carRep;
         }
 
-        public IList<Car> Car { get;set; } = default!;
+        public IList<Car> Car { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public IActionResult OnGet()
         {
-            Car = carRep.GetAll().ToList<Car>();
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
+            {
+                Car = carRep.GetAll().ToList<Car>();
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("Admin/Index");
+            }
+
         }
     }
 }

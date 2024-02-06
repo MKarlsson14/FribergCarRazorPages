@@ -15,10 +15,19 @@ namespace FribergCarRazorPages.Pages.Admin
     {
 
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
+            {
 
-            return Page();
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("Admin/Index");
+            }            
         }
     }
 }

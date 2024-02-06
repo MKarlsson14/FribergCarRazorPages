@@ -8,10 +8,18 @@
     <button class="buttonFunction">
     <a asp-page="Create">Create New Car</a>
     </button>
+    <button>
+        <a asp-page="/Admin/IndexAdmin">&nbsp; Back</a>
+    </button>
 </p>
+@if(Model.Car.Count() > 0)
+{
 <table class="table">
     <thead>
         <tr>
+            <th>
+                The Car
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Car[0].Brand)
             </th>
@@ -21,7 +29,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Car[0].Price)
             </th>
-            <th></th>
+            <th>
+                Action
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -50,8 +60,10 @@
     </tbody>
 </table>
 <br />
-<div>
-    <button>
-    <a asp-page="/Admin/IndexAdmin">&nbsp; Back</a>
-    </button>
-</div>
+}
+else
+{
+<button>
+    <h1>No Current Cars</h1>
+</button>
+}

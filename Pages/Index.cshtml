@@ -3,14 +3,18 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
+<h4 id="logo"><img src="~/pictures/fribergrentalnobg.png" width="250"></h4>
 <div class="detailbg">
-    <h1 class="homeh1">Friberg Car Rental</h1>
-    <p>
+    <h3>
         Welcome to the perfect place to rent your luxury automobile.<br>
         Feel free to have a look at which cars are availible at the current time.<br>
-
-        BUTTONS TO GO TO CARS AND AVAILIBLE CARS BELOW<br><br>
-        ONE FOR AVAILIBLE CARS AND ONE FOR ALL CARS
-    </p>
+    </h3>
 </div>
+<nav class="navbody">
+    <ul>
+        <li><a asp-area="" asp-page="/Home/List">Check Out Available Cars!</a></li>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+    </ul>
+</nav>

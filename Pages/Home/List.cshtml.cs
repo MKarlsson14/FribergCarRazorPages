@@ -22,8 +22,9 @@ namespace FibergCarRazorPages.Pages.Home
 
         public IList<Car> Car { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public void OnGet()
         {
+            ViewData["customer"] = Request.Cookies["customer"];
             Car = carRep.GetAll().ToList();
         }
     }

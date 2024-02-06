@@ -159,7 +159,7 @@ button {
 }
 
 .buttonNegative {
-    background-color: #7C0A02;
+    background-color: #b30000;
     color: rgb(73, 6, 6);
 }
 
@@ -170,7 +170,7 @@ button {
 
 .backbutton {
     margin-left: 1px;
-    padding: 0rem;
+    padding: 0.3rem;
     border-style: solid;
     border-top-color: lightgray;
     border-left-color: ghostwhite;
@@ -179,6 +179,7 @@ button {
     border-bottom-width: thin;
     border-right-width: thin;
     background-color: #B22222;
+    border-radius:0px;
 }
 
 .createbutton {
@@ -273,3 +274,18 @@ button {
     padding-top: 0rem;
     overflow: hidden;
 }
+* {
+    box-sizing: border-box
+}
+.slideshow {
+    width: 500px;
+    height: 300px;
+    position:relative;
+    margin:auto;
+}
+    .slideshow img {   
+        width: 100%;
+        height: 100%;
+        object-fit:cover;
+        
+    }

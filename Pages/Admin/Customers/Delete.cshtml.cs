@@ -23,27 +23,36 @@ namespace FribergCarRazorPages.Pages.Admin.Customers
         [BindProperty]
         public FibergCarRazorPages.Models.Customer Customer { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public IActionResult OnGet(int id)
         {
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
+            var customer = custRep.GetById(id);
             if (id == null)
             {
                 return NotFound();
             }
+            if (ViewData["admin"] != null)
+            {           
 
-            var customer = custRep.GetById(id);
-
-            if (customer == null)
-            {
-                return NotFound();
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    Customer = customer;
+                }
+                return Page();
+                
             }
             else
             {
-                Customer = customer;
-            }
-            return Page();
+                return RedirectToPage("Admin/Index");
+            }        
         }
 
-        public async Task<IActionResult> OnPostAsync(int id)
+        public IActionResult OnPost(int id)
         {
             if (id == null)
             {

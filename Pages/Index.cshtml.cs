@@ -14,6 +14,8 @@ namespace FibergCarRazorPages.Pages
 
         public void OnGet()
         {
+            ViewData["customer"] = Request.Cookies["customer"];
+            ViewData["admin"] = Request.Cookies["admin"];
 
         }
     }

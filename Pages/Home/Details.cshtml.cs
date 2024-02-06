@@ -21,8 +21,9 @@ namespace FibergCarRazorPages.Pages.Home
 
         public Car Car { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public IActionResult OnGet(int id)
         {
+            ViewData["customer"] = Request.Cookies["customer"];
             if (id == null)
             {
                 return NotFound();

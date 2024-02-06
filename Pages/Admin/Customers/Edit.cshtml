@@ -14,12 +14,12 @@
             <div asp-validation-summary="ModelOnly"></div>
             <input type="hidden" asp-for="Customer.CustomerId" />
             <div>
-                <label asp-for="Customer.CustomerName"></label>
+                <label asp-for="Customer.CustomerName">Email: </label>
                 <input asp-for="Customer.CustomerName"/>
                 <span asp-validation-for="Customer.CustomerName"></span>
-            </div>
+            </div><br />
             <div>
-                <label asp-for="Customer.CustomerPassword"></label>
+                <label asp-for="Customer.CustomerPassword">Password: </label>
                 <input asp-for="Customer.CustomerPassword"/>
                 <span asp-validation-for="Customer.CustomerPassword"></span>
             </div>
@@ -28,7 +28,9 @@
             </div>
         </form><br />
         <div>
-            <a asp-page="./Index" class="buttonNegative">&nbsp;Back</a>
+            <button class="buttonNegative">
+            <a asp-page="./Index" >Back</a>
+            </button>
         </div>
 
     </div>

@@ -21,7 +21,7 @@ namespace FribergCarRazorPages.Pages.Admin.Cars
 
         public Car Car { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public IActionResult OnGet(int id)
         {
             if (id == null)
             {
@@ -29,15 +29,25 @@ namespace FribergCarRazorPages.Pages.Admin.Cars
             }
 
             var car = carRep.GetById(id);
-            if (car == null)
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
             {
-                return NotFound();
+                if (car == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    Car = car;
+                }
+                return Page();              
             }
             else
             {
-                Car = car;
+                return RedirectToPage("Admin/Index");
             }
-            return Page();
+
         }
     }
 }

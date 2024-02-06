@@ -22,23 +22,33 @@ namespace FribergCarRazorPages.Pages.Admin.Customers
 
         public FibergCarRazorPages.Models.Customer Customer { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public IActionResult OnGet(int id)
         {
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
             if (id == null)
             {
                 return NotFound();
             }
 
             var customer = custRep.GetById(id);
-            if (customer == null)
+            if (ViewData["admin"] != null)
             {
-                return NotFound();
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    Customer = customer;
+                }
+                return Page();
             }
             else
             {
-                Customer = customer;
+                return RedirectToPage("Admin/Index");
             }
-            return Page();
+
         }
     }
 }

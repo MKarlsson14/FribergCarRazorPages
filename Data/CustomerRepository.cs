@@ -1,8 +1,10 @@
 ﻿using FibergCarRazorPages.Models;
+using FribergCarRazorPages.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FibergCarRazorPages.Data
 {
-    public class CustomerRepository : GenericRepository<Customer>
+    public class CustomerRepository : GenericRepository<Customer> , ICustomer
     {
         private readonly ApplicationDbContext context;
 
@@ -31,7 +33,7 @@ namespace FibergCarRazorPages.Data
 
         public override IEnumerable<Customer> GetAll()
         {
-            return context.Customers.OrderBy(s => s.CustomerName);
+            return context.Customers.OrderBy(s => s.CustomerName).Include(s=>s.Bookings);
         }
 
         public override Customer GetById(int id)

@@ -10,10 +10,12 @@
 
     <div>
         <h4>See the details of the car</h4><br />
-        <h4 class="picturedetail">
-            <img src="@Url.Content(Model.Car.Picture1)" width="250" />
-            <img src="@Url.Content(Model.Car.Picture2)" width="250" />
-        </h4>
+        <div class="slideshow">
+            <img src="@Url.Content(Model.Car.Picture1)" alt="image 1" />
+        </div><br />
+        <div class="slideshow">
+            <img src="@Url.Content(Model.Car.Picture2)" alt="image 2" />
+        </div>
         <dl class="row">
             <dt class="headdetails">
                 @Html.DisplayNameFor(model => model.Car.Brand):
@@ -36,8 +38,7 @@
         </dl>
     </div>
     <div class="navdetails">
-        <button class="buttonPositive">
-            @* <button type="button" onclick="location.href='@Url.Action("CreateBooking", "Customer")'">BOOK THIS CAR</button> *@
+        <button class="buttonPositive">      
             <a asp-area="" asp-page="/Customer/CreateBooking">MAKE A BOOKING</a>
         </button>
         <button class="button">

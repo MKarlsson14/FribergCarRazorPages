@@ -1,0 +1,38 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Customer.CreateCustomerModel
+
+@{
+    ViewData["Title"] = "CreateCustomer";
+}
+
+<div class="row">
+    <div class="car-creation">
+        <h4>Please fill in the information below.</h4>
+        <h4>Press the "Create" button when finished.</h4>
+        <h4>Press the "Back" button to go back.</h4>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div ><br />
+                <label asp-for="Customer.CustomerName">Enter Email:</label>
+                <input asp-for="Customer.CustomerName"/>
+                <span asp-validation-for="Customer.CustomerName"></span>
+            </div><br />
+            <div >
+                <label asp-for="Customer.CustomerPassword">Choose Password:</label>
+                <input asp-for="Customer.CustomerPassword" />
+                <span asp-validation-for="Customer.CustomerPassword"></span>
+            </div><br />
+            <div >
+                <input type="submit" value="Create" class="buttonPositive" />
+            </div><br />
+        </form>       
+            <button class="backbutton">
+                <a asp-page="./Index">Back</a>
+            </button>     
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

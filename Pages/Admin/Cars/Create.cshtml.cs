@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using FibergCarRazorPages.Data;
 using FibergCarRazorPages.Models;
+using FribergCarRazorPages.Data;
 
 namespace FribergCarRazorPages.Pages.Admin.Cars
 {
@@ -21,14 +22,24 @@ namespace FribergCarRazorPages.Pages.Admin.Cars
 
         public IActionResult OnGet()
         {
-            return Page();
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
+            {
+
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("Admin/Index");
+            }
         }
 
         [BindProperty]
         public Car Car { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {

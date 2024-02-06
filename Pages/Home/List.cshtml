@@ -6,7 +6,7 @@
 }
 
 
-<h1>Availible Cars</h1>
+<h1>Available Cars</h1>
 
 
 <table class="table">
@@ -42,10 +42,8 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
-                <td>
-                    <button class="button">
-                        <a asp-page="./Details" asp-route-id="@item.CarId">More Info</a>
-                    </button>
+                <td>                  
+                  <a asp-page="./Details" asp-route-id="@item.CarId">More Info</a>                  
                 </td>
             </tr>
         }

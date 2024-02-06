@@ -14,22 +14,48 @@ namespace FribergCarRazorPages.Pages.Customer
     public class LoginCustomerModel : PageModel
     {
         private readonly IRepository<FibergCarRazorPages.Models.Customer> custRep;
+        private readonly IHttpContextAccessor cookie;
 
-        public LoginCustomerModel(IRepository<FibergCarRazorPages.Models.Customer> custRep)
+        public LoginCustomerModel(IRepository<FibergCarRazorPages.Models.Customer> custRep, IHttpContextAccessor cookie)
         {         
             this.custRep = custRep;
+            this.cookie = cookie;
         }
 
         public IActionResult OnGet()
         {
-            return Page();
+            ViewData["customer"] = Request.Cookies["customer"];
+            if (ViewData["customer"] == null)
+            {
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("./IndexCustomer");
+            }
+            
+        }
+
+        public IActionResult OnGetLogOut()
+        {
+            ViewData["customer"] = Request.Cookies["customer"];
+            if (ViewData["customer"] != null)
+            {
+                Response.Cookies.Delete("customer");
+                return RedirectToPage("/Index");
+            }
+            else
+            {
+                return RedirectToPage("Index");
+            }
+
         }
 
         [BindProperty]
         public FibergCarRazorPages.Models.Customer Customer { get; set; } = default!;
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             if (Customer != null && custRep.GetAll() != null)
             {
@@ -46,7 +72,9 @@ namespace FribergCarRazorPages.Pages.Customer
                     custModel = checkCust.First(s => s.CustomerName == Customer.CustomerName);
                     if (custModel != null && custModel.CustomerName == Customer.CustomerName && custModel.CustomerPassword == Customer.CustomerPassword)
                     {
-                        //redirecta till Login succesfull
+                        CookieOptions options = new CookieOptions();
+                        options.Expires = DateTimeOffset.UtcNow.AddMinutes(45);
+                        cookie.HttpContext.Response.Cookies.Append("customer", custModel.CustomerId.ToString(), options);
                         return RedirectToPage("./ConfirmedLogin");
                     }
                 }

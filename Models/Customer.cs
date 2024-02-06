@@ -6,11 +6,14 @@ namespace FibergCarRazorPages.Models
     {
         public int CustomerId { get; set; }
         public virtual List<Booking> Bookings { get; set; }
-        [Display(Name = "Name")]
-        [DataType(DataType.Text)]
+        [Required]
+        [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress)]
         public string CustomerName { get; set; }
+        [Required]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
+        [MinLength(6)]
         public string CustomerPassword { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace FribergCarRazorPages.Pages.Admin.Cars
         [BindProperty]
         public Car Car { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public IActionResult OnGet(int id)
         {
             if (id == null || carRep.GetAll() == null)
             {
@@ -31,17 +31,28 @@ namespace FribergCarRazorPages.Pages.Admin.Cars
             }
 
             var car = carRep.GetById(id);
-            if (car == null)
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
             {
-                return NotFound();
+                if (car == null)
+                {
+                    return NotFound();
+                }
+                Car = car;
+                return Page();
             }
-            Car = car;
-            return Page();
+            else
+            {
+                return RedirectToPage("Admin/Index");
+            }
+
+
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
@@ -52,6 +63,6 @@ namespace FribergCarRazorPages.Pages.Admin.Cars
 
             return RedirectToPage("./Index");
         }
-       
+
     }
 }

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FribergCarRazorPages</title>
+   @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FribergCarRazorPages.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+
+        <nav>
+            <ul>
+                <li id="logo"><img src="~/pictures/fribergrentalnobg.png" width="70" /></li>
+                <li><a asp-area="" asp-page="/Customer/IndexCustomer">Home</a></li>
+                &nbsp;
+                <li><a asp-area="" asp-page="/Home/List">Our Cars</a></li>
+                &nbsp;            
+                <li><a asp-area="" asp-page="/Customer/Index" asp-page-handler="LogOut">Log Out</a></li>          
+                &nbsp;
+               @*  Byt format och lägg til "asp-page="/NametpåSidan" istället för asp-controller och asp-action *@
+            </ul>
+        </nav>
+    </header>
+
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

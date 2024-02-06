@@ -11,12 +11,21 @@ using FibergCarRazorPages.Models;
 namespace FribergCarRazorPages.Pages.Admin
 {
     public class IndexModel : PageModel
-    {  
-        
+    {
 
-        public async Task OnGetAsync()
+
+        public IActionResult OnGet()
         {
-            
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
+            {
+                
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("Admin/Index");
+            }
         }
     }
 }

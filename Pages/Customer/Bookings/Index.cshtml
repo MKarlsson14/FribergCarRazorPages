@@ -1,0 +1,140 @@
+﻿@page
+@model FribergCarRazorPages.Pages.Customer.Bookings.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var activeList = Model.Booking.Where(s => s.IsActive == 1);
+    var oldList = Model.Booking.Where(s => s.IsActive == 0);
+}
+@if (activeList.Count() > 0)
+{
+    <button>
+        <h1>Active Bookings</h1>
+    </button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Booking Number
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].Customer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].Car)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].EndDate)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in activeList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+                    </td>
+                    <td>
+                        @item.Car.Brand @item.Car.Model
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                      <a asp-page="./Edit" asp-route-id="@item.BookingId">Return Car</a> |
+                      <a asp-page="./Delete" asp-route-id="@item.BookingId">Delete Booking</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <button>
+        <h1>No Active Bookings</h1>
+    </button>
+}
+<br />
+@if (oldList.Count() > 0)
+{
+    <button>
+        <h1>Old Bookings</h1>
+    </button>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Booking Number
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].Customer)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].Car)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Booking[0].EndDate)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in oldList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BookingId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerName)
+                    </td>
+                    <td>
+                        @item.Car.Brand @item.Car.Model
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>                      
+                       <a asp-page="./Delete" asp-route-id="@item.BookingId">Delete Booking</a>                       
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <button>
+        <h1>No Old Bookings</h1>
+    </button>
+}
+<br />
+<br />
+<button>
+    <a asp-page="/Customer/IndexCustomer">Back</a>
+</button>

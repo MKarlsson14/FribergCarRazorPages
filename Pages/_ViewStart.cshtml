@@ -1,3 +1,16 @@
 ﻿@{
-    Layout = "_Layout";
+    if(ViewData["customer"] == null && ViewData["admin"] == null)
+    {
+        Layout = "_Layout";
+    }
+    else if (ViewData["customer"] != null && ViewData["admin"] == null)
+    {
+        Layout = "_LayoutCust";
+    }
+    else if (ViewData["admin"] != null && ViewData["customer"] == null)
+    {
+        Layout = "_LayoutAdmin";
+    }
+
+    
 }

@@ -4,10 +4,16 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@if (Model.Customer.Count > 0)
+{    
+<p>
 <button class="buttonFunction">
     <a asp-page="Create">Create New Customer</a>
 </button>
+    <button>
+        <a asp-page="/Admin/IndexAdmin">&nbsp; Back</a>
+    </button>
+    </p>
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +23,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Customer[0].CustomerPassword)
             </th>
-            <th></th>
+            <th>
+                Action
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -38,8 +46,10 @@
 }
     </tbody>
 </table>
-<div>
-    <button>
-        <a asp-page="/Admin/IndexAdmin">&nbsp; Back</a>
-    </button>
-</div>
+}
+else
+{
+<button>
+    <h1>No Current Customers</h1>
+</button>
+}

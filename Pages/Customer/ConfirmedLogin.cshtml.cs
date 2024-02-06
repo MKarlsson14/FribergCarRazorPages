@@ -12,11 +12,19 @@ namespace FribergCarRazorPages.Pages.Customer
 {
     public class ConfirmedLoginModel : PageModel
     {
-      
 
-        public async Task OnGetAsync()
+
+        public IActionResult OnGet()
         {
-            
+            ViewData["customer"] = Request.Cookies["customer"];
+            if (ViewData["customer"] != null)
+            {
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("Customer/Index");
+            }
         }
     }
 }

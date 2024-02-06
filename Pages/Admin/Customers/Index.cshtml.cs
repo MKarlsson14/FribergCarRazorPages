@@ -19,11 +19,22 @@ namespace FribergCarRazorPages.Pages.Admin.Customers
             this.custRep = custRep;
         }
 
-        public IList<FibergCarRazorPages.Models.Customer> Customer { get;set; } = default!;
+        public IList<FibergCarRazorPages.Models.Customer> Customer { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public IActionResult OnGet()
         {
-            Customer = custRep.GetAll().ToList<FibergCarRazorPages.Models.Customer>();
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
+            {
+                Customer = custRep.GetAll().ToList();
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("Admin/Index");
+            }
+
         }
     }
 }

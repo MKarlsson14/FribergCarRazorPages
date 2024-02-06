@@ -23,7 +23,7 @@ namespace FribergCarRazorPages.Pages.Admin.Customers
         [BindProperty]
         public FibergCarRazorPages.Models.Customer Customer { get; set; } = default!;
 
-        public async Task<IActionResult> OnGetAsync(int id)
+        public IActionResult OnGet(int id)
         {
             if (id == null || custRep.GetAll() == null)
             {
@@ -31,25 +31,35 @@ namespace FribergCarRazorPages.Pages.Admin.Customers
             }
 
             var customer = custRep.GetById(id);
-            if (customer == null)
+            //Koll om användaren är inloggad
+            ViewData["admin"] = Request.Cookies["admin"];
+            if (ViewData["admin"] != null)
             {
-                return NotFound();
+                if (customer == null)
+                {
+                    return NotFound();
+                }
+                Customer = customer;
+                return Page();
+                
             }
-            Customer = customer;
-            return Page();
+            else
+            {
+                return RedirectToPage("Admin/Index");
+            }    
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            if (Customer.CustomerId == null || Customer.CustomerName== null || Customer.CustomerPassword == null)
             {
                 return Page();
             }
 
             custRep.Edit(Customer);
-            return RedirectToPage("./Customers/Index");
+            return RedirectToPage("./Index");
         }
 
         

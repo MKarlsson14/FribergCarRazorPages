@@ -13,7 +13,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly"></div>
             <div>
-                <label asp-for="Customer.CustomerName">Name:</label>
+                <label asp-for="Customer.CustomerName">Email:</label>
                 <input asp-for="Customer.CustomerName"/>
                 <span asp-validation-for="Customer.CustomerName"></span>
             </div><br />
@@ -26,8 +26,8 @@
                 <input type="submit" value="Create" class="buttonPositive" />
             </div>
         </form><br />
-        <div class="backbutton">
-            <button>
+        <div>
+            <button class="backbutton">               
                 <a asp-page="./Index">&nbsp;Back</a>
             </button>
         </div>

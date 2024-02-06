@@ -4,20 +4,21 @@
 @{
     ViewData["Title"] = "CreateBooking";
 }
-
+<br />
 <form asp-action="CreateBooking">
     <table class="table">
         <th class="bookingheader">Fill out the information required to book a car.</th>
         <tbody>
             <tr>
-                <td>
-                    <label>Choose Desired Customer:</label>
+                       @*  Dropdown lista flr att välja kund *@
+                @*   <td>
+                     <label>Choose Desired Customer:</label>
                     <br />
                     <select asp-for="Booking.Customer.CustomerId" asp-items="Model.Customers">
                         Choose Customer:
                         <option>Please choose one</option>
-                    </select>
-                </td>
+                    </select>                  
+                </td>  *@
                 <td>
                     <label>Choose Desired Car:</label><br />
                     <select asp-for="Booking.Car.CarId" asp-items="Model.Cars">
@@ -37,49 +38,17 @@
                     <span asp-validation-for="Booking.EndDate"></span>
                 </td>
                 <td>
-                    <input type="submit" value="Save" />
-                    <div>
-                        <a asp-controller="Home" asp-action="List">Our Cars</a>
-                    </div>
+                    <input type="submit" value="Make Booking" />                                 
                 </td>
             </tr>
 
         </tbody>
     </table>
 </form>
-
-@* <h1>CreateBooking</h1>
-
-<h4>Booking</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Booking.CustomerId" class="control-label"></label>
-                <select asp-for="Booking.CustomerId" class ="form-control" asp-items="ViewBag.CustomerId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.StartDate" class="control-label"></label>
-                <input asp-for="Booking.StartDate" class="form-control" />
-                <span asp-validation-for="Booking.StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Booking.EndDate" class="control-label"></label>
-                <input asp-for="Booking.EndDate" class="form-control" />
-                <span asp-validation-for="Booking.EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
-</div> *@
+<br />
+<button>
+    <a asp-page="/Home/List">Back</a>
+</button>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -13,9 +13,17 @@ namespace FribergCarRazorPages.Pages.Customer
     public class IndexCustomerModel : PageModel
     {
 
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {           
-            return Page();
+        public IActionResult OnGet()
+        {
+            ViewData["customer"] = Request.Cookies["customer"];
+            if (ViewData["customer"] != null)
+            {
+                return Page();
+            }
+            else
+            {
+                return RedirectToPage("./Index");
+            }          
         }
     }
 }
